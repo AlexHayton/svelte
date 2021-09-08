@@ -1,6 +1,6 @@
 #!/bin/bash
 
-netlify deploy >deploy.log
+npx netlify deploy >deploy.log
 export DEPLOY_URL=$(cat deploy.log | awk -F"[ ]+" '/Website Draft URL:/{print $4}')
 
 if [ -z ${CIRCLE_PR_NUMBER+x} ]; then
