@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Run build
           command: npm run build
-      - gh/setup
+      - github-cli/setup
       - run:
           name: Netlify deploy preview
           command: ./bin/netlify-deploy.sh
