@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  github-cli: circleci/github-cli@1.0.4
+
 jobs:
   build:
     working_directory: ~/repo
@@ -18,6 +22,7 @@ jobs:
       - run:
           name: Run build
           command: npm run build
+      - gh/setup
       - run:
           name: Netlify deploy preview
           command: ./bin/netlify-deploy.sh
