@@ -3,7 +3,8 @@
 if [ -z ${CIRCLE_PULL_REQUEST+x} ]; then
     export DEPLOY_ALIAS=$(git rev-parse --short HEAD)
 else
-    export DEPLOY_ALIAS="pr-$CIRCLE_PULL_REQUEST"
+    export PR_NUMBER=${CIRCLE_PULL_REQUEST//[!0-9]/}
+    export DEPLOY_ALIAS="pr-$PR_NUMBER"
 fi
 
 npx netlify deploy --alias ${DEPLOY_ALIAS} >deploy.log
